@@ -10,3 +10,7 @@ Cluster::Cluster()
 Cluster::~Cluster()
 {
 }
+
+void Cluster::miniMax()
+{
+}

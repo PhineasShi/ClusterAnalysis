@@ -7,8 +7,8 @@ public:
 	Cluster();
 	Cluster(int dim, int num, DistType distType = euclidean) :dim(dim), num(num), distType(distType) {};
 	~Cluster();
-	void miniMax();
-	void cMean();
+	void miniMax();				//最大最小距离法
+	void cMean();				//C均值法
 
 
 private:

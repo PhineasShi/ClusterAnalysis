@@ -11,11 +11,6 @@ Distance::~Distance()
 {
 }
 
-void Distance::setDist(double dist)
-{
-	this->dist = dist;
-}
-
 double Distance::getDist()
 {
 	switch (distType)

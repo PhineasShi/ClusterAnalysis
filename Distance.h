@@ -15,7 +15,6 @@ public:
 	Distance(int dim, double *vec1, double *vec2,DistType distType) :dim(dim),vec1(vec1),vec2(vec2),distType(distType) {};
 	~Distance();
 
-	void setDist(double dist);
 	double getDist();
 
 private:
@@ -30,6 +29,6 @@ private:
 	void calMaDist();
 	void calChDist();
 	void calMiDist();
-	void calMeDist();
+	void calMeDist();		//TODO
 };
 
