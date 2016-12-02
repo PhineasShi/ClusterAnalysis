@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+
+#include "Cluster.h"
+
 using namespace std;
 
 void loadTestdata(string path, vector<vector<double> > &vecs);
@@ -10,6 +13,9 @@ int main()
 	string path = "data.data";
 	vector<vector<double> > vecs;
 	loadTestdata(path, vecs);
+	Cluster cluster(vecs,euclidean,0.6);
+	cluster.miniMax();
+
 	return 0;
 }
 
@@ -33,6 +39,6 @@ void loadTestdata(string path, vector<vector<double> > &vecs)
 			vec.push_back(data);
 		}
 		vecs.push_back(vec);
-		in.get();
+		in.get();	//read \n
 	}
 }
