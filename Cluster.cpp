@@ -13,4 +13,5 @@ Cluster::~Cluster()
 
 void Cluster::miniMax()
 {
+
 }
