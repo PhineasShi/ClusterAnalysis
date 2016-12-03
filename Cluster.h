@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <vector>
 #include <list>
 #include "Distance.h"
@@ -14,6 +15,7 @@ public:
 	void miniMax();				//最大最小距离法
 	void cMean();				//C均值法
 
+	void showResult();
 
 private:
 	vector<vector<double> > vecs;

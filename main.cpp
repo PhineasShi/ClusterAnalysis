@@ -15,7 +15,8 @@ int main()
 	loadTestdata(path, vecs);
 	Cluster cluster(vecs,euclidean,0.6);
 	cluster.miniMax();
-
+	cluster.showResult();
+	system("pause");
 	return 0;
 }
 

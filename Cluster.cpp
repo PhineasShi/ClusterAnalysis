@@ -52,6 +52,50 @@ void Cluster::miniMax()
 	}
 	//Clustering with the centers found in minium dist method
 	//TODO
+	for (list<vector<double> >::iterator i = lists.begin(); i != lists.end(); i++)
+	{
+		double minDist;
+		int minInd=0;
+		for (int j = 0; j < result.size(); j++)
+		{
+			center = result[j][0];
+			Distance dist(*i,center,distType);
+			double distance = dist.getDist();
+			if (j == 0)
+			{
+				minDist = distance;
+			}
+			else
+			{
+				minDist = (minDist < distance) ? minDist : distance;
+				minInd = (minDist < distance) ? minInd : j;
+			}
+		}
+		result[minInd].push_back(*i);
+	}
+}
+
+void Cluster::showResult()
+{
+	for (int i = 0; i < result.size(); i++)
+	{
+		vector<vector<double> > vecs = result[i];
+		for (int j = 0; j < vecs.size(); j++)
+		{
+			vector<double> vec = vecs[j];
+			cout << "(" << vec[0];
+			for (int k = 1; k < vec.size(); k++)
+			{
+				cout << "," << vec[k];
+			}
+			cout << ")";
+			if (j == 0)
+			{
+				cout << ":";
+			}
+		}
+		cout << endl;
+	}
 }
 
 void Cluster::getMax(list<vector<double> > lists, vector<double> &maxVec, double &maxDist)
