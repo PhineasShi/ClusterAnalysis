@@ -7,6 +7,8 @@
 using namespace std;
 
 void loadTestdata(string path, vector<vector<double> > &vecs);
+void writeTestData(string fileName,const vector<vector<double> > &vecs);	//TODO: Write test Data set to file
+void readTestDataFromKeyBoard(vector<vector<double> > &vecs);				//TODO: Get test Data set from keyboard
 
 int main()
 {
