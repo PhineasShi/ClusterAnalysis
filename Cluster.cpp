@@ -100,6 +100,7 @@ void Cluster::showResult()
 
 void Cluster::getMax(list<vector<double> > lists, vector<double> &maxVec, double &maxDist)
 {
+	maxDist = 0;
 	vector<double> center;
 	for (list<vector<double> >::iterator i = lists.begin(); i != lists.end(); i++)	//Traverse every vecs which are not center
 	{
