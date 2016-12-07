@@ -23,6 +23,11 @@ private:
 	double ratio;				//最大最小距离法所需的比例参数
 	DistType distType;
 
+	//Show functions
+	void showVec(const vector<double> &vec);
+	void showCenterFound(const vector<double> &vec,const double &dist);
+	void showVecClustered(const vector<double> &center, const vector<double> &vec, const double &minDist);
+
 	void getMax(list<vector<double> > lists,vector<double> &maxVec,double &maxDist);				//Get the vec whose min distance to centers is the max among all the vecs, and get the distance too
 
 };

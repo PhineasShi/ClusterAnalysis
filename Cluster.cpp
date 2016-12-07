@@ -18,7 +18,8 @@ void Cluster::miniMax()
 	vector<vector<double> > cl;
 	cl.push_back(center);
 	result.push_back(cl);			//Push the new class into the result
-
+	cout << "Default center:";
+	showVec(center);
 	//Transform the vecs to lists for better insert and remove performance
 	list<vector<double> > lists;
 	for (int i = 0; i < vecs.size(); i++)
@@ -29,6 +30,8 @@ void Cluster::miniMax()
 	//Find the second center
 	double critDist;					//The distance of the first two centers
 	getMax(lists, center, critDist);	//Find the second center 
+	cout << endl << "Finding new centers:" << endl;
+	showCenterFound(center, critDist);
 	cl.clear();
 	cl.push_back(center);
 	result.push_back(cl);			//Push the new class into the result, with the new center as the first vec
@@ -44,6 +47,7 @@ void Cluster::miniMax()
 			cl.push_back(center);
 			result.push_back(cl);	//Push the new class into the result, with the new center as the first vec
 			lists.remove(center);	//Remove the new center from the vecs
+			showCenterFound(center,dist);
 		}
 		else
 		{
@@ -51,12 +55,12 @@ void Cluster::miniMax()
 		}
 	}
 	//Clustering with the centers found in minium dist method
-	//TODO
-	for (list<vector<double> >::iterator i = lists.begin(); i != lists.end(); i++)
+	cout << endl << "Clustering with the centers found:" << endl;
+	for (list<vector<double> >::iterator i = lists.begin(); i != lists.end(); i++)	//Traverse all the free vecs
 	{
 		double minDist;
 		int minInd=0;
-		for (int j = 0; j < result.size(); j++)
+		for (int j = 0; j < result.size(); j++)		//Traverse all the centers
 		{
 			center = result[j][0];
 			Distance dist(*i,center,distType);
@@ -72,23 +76,20 @@ void Cluster::miniMax()
 			}
 		}
 		result[minInd].push_back(*i);
+		showVecClustered(result[minInd][0], *i, minDist);
 	}
 }
 
 void Cluster::showResult()
 {
+	cout << endl << "Results:" << endl;
 	for (int i = 0; i < result.size(); i++)
 	{
 		vector<vector<double> > vecs = result[i];
 		for (int j = 0; j < vecs.size(); j++)
 		{
 			vector<double> vec = vecs[j];
-			cout << "(" << vec[0];
-			for (int k = 1; k < vec.size(); k++)
-			{
-				cout << "," << vec[k];
-			}
-			cout << ")";
+			showVec(vec);
 			if (j == 0)
 			{
 				cout << ":";
@@ -96,6 +97,31 @@ void Cluster::showResult()
 		}
 		cout << endl;
 	}
+}
+
+void Cluster::showVec(const vector<double>& vec)
+{
+	cout << "(" << vec[0];
+	for (int k = 1; k < vec.size(); k++)
+	{
+		cout << "," << vec[k];
+	}
+	cout << ")";
+}
+
+void Cluster::showCenterFound(const vector<double>& vec, const double & dist)
+{
+	cout << "New center found:";
+	showVec(vec);
+	cout << "\t" << "Max distance to the closest center:" << dist << endl;	
+}
+
+void Cluster::showVecClustered(const vector<double>& center, const vector<double>& vec, const double& minDist)
+{
+	showVec(center);
+	cout << "<<";
+	showVec(vec);
+	cout << "\t" << "Distance to the closest center:" << minDist << endl;
 }
 
 void Cluster::getMax(list<vector<double> > lists, vector<double> &maxVec, double &maxDist)
