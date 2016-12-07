@@ -26,10 +26,32 @@ int main()
 	string path = "test.data";
 	vector<vector<double> > vecs;
 	loadTestdata(path, vecs);
-	Cluster cluster(vecs, euclidean, 0.6);
-	cluster.miniMax();
-	cluster.showResult();
-	saveResult(cluster, "result.data");
+
+	cout << "输入最大最小距离法所需的比例参数:" << endl;
+	double ratio;
+	cin >> ratio;
+	getchar();
+
+	cout << "选择距离算法：" << endl;
+	cout << "1-欧式距离" << endl;
+	cout << "2-绝对值距离" << endl;
+	cout << "3-切氏距离" << endl;
+	cout << "4-闵氏距离" << endl;
+	cin >> select;
+	getchar();
+	Cluster *cluster = nullptr;
+	switch(select)
+	{
+		case 1:cluster= new Cluster(vecs, euclidean, ratio); break;
+		case 2:cluster = new Cluster(vecs, manhattan, ratio); break;
+		case 3:cluster = new Cluster(vecs, chebyshev, ratio); break;
+		case 4:cluster = new Cluster(vecs, minkowski, ratio); break;
+
+	}
+
+	cluster->miniMax();
+	cluster->showResult();
+	saveResult(*cluster, "result.data");
 	system("pause");
 	return 0;
 }
