@@ -16,7 +16,7 @@ public:
 	void cMean();				//C均值法
 
 	void showResult();
-
+	vector<vector<vector<double> > > getResult() { return result; };
 private:
 	vector<vector<double> > vecs;
 	vector<vector<vector<double> > > result;		//vector<vector<double> >存放每一类的所有vec，其中的第一个vector<double>为该类的聚类中心 
