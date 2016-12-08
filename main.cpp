@@ -46,8 +46,12 @@ int main()
 		case 1:cluster = new Cluster(vecs, euclidean, ratio); break;
 		case 2:cluster = new Cluster(vecs, manhattan, ratio); break;
 		case 3:cluster = new Cluster(vecs, chebyshev, ratio); break;
-		case 4:cluster = new Cluster(vecs, minkowski, ratio); break;
-
+		case 4:
+			cout << "输入闵氏距离的参数:" << endl;
+			int m;
+			cin >> m;
+			getchar();
+			cluster = new Cluster(vecs, minkowski, ratio, m); break;
 		}
 
 		cluster->miniMax();

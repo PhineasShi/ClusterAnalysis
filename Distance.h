@@ -15,7 +15,7 @@ class Distance
 {
 public:
 	Distance();
-	Distance(vector<double> &vec1, vector<double> &vec2, DistType distType = euclidean) :vec1(vec1), vec2(vec2), distType(distType) { dim = vec1.size(); };
+	Distance(vector<double> &vec1, vector<double> &vec2, DistType distType = euclidean, int m = 2) :vec1(vec1), vec2(vec2), distType(distType), m(m) { dim = vec1.size(); };
 	~Distance();
 
 	double getDist();		//º∆À„≤¢∑µªÿæ‡¿Î

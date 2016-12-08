@@ -10,7 +10,7 @@ class Cluster
 {
 public:
 	Cluster();
-	Cluster( vector<vector<double> > &vecs, DistType distType = euclidean, double ratio = 0.5) :vecs(vecs), distType(distType), ratio(ratio) {};
+	Cluster( vector<vector<double> > &vecs, DistType distType = euclidean, double ratio = 0.5, int m = 2) :vecs(vecs), distType(distType), ratio(ratio), m(m) {};
 	~Cluster();
 	void miniMax();				//最大最小距离法
 	void cMean();				//C均值法
@@ -21,6 +21,7 @@ private:
 	vector<vector<double> > vecs;
 	vector<vector<vector<double> > > result;		//vector<vector<double> >存放每一类的所有vec，其中的第一个vector<double>为该类的聚类中心 
 	double ratio;				//最大最小距离法所需的比例参数
+	int m;						//闵氏距离所需的参数
 	DistType distType;
 
 	//Show functions

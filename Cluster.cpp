@@ -63,7 +63,7 @@ void Cluster::miniMax()
 		for (int j = 0; j < result.size(); j++)		//Traverse all the centers
 		{
 			center = result[j][0];
-			Distance dist(*i,center,distType);
+			Distance dist(*i,center,distType,m);
 			double distance = dist.getDist();
 			if (j == 0)
 			{
@@ -134,7 +134,7 @@ void Cluster::getMax(list<vector<double> > lists, vector<double> &maxVec, double
 		for (int j = 0; j < result.size(); j++)	//Traverse every centers
 		{
 			center = result[j][0];
-			Distance dist(*i, center, distType);
+			Distance dist(*i, center, distType,m);
 			double distance = dist.getDist();
 			if (j == 0)
 			{
