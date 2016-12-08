@@ -86,5 +86,5 @@ void Distance::calMeDist()
 		var2 += vec2[i] * vec2[i];
 	}
 
-	var = var / (var1+var2-var);
+	dist = var / (var1+var2-var);
 }
