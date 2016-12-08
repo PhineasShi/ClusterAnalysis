@@ -78,4 +78,13 @@ void Distance::calMiDist()
 
 void Distance::calMeDist()
 {
+	double var = 0,var1=0,var2=0;
+	for (int i = 0; i < dim; i++)
+	{
+		var += vec1[i] * vec2[i];
+		var1 += vec1[i] * vec1[i];
+		var2 += vec2[i] * vec2[i];
+	}
+
+	var = var / (var1+var2-var);
 }
