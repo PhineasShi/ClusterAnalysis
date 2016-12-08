@@ -38,6 +38,7 @@ int main()
 		cout << "2-¾ø¶ÔÖµ¾àÀë" << endl;
 		cout << "3-ÇÐÊÏ¾àÀë" << endl;
 		cout << "4-ãÉÊÏ¾àÀë" << endl;
+		cout << "5-Æ¥Åä²â¶È" << endl;
 		cin >> select;
 		getchar();
 		Cluster *cluster = nullptr;
@@ -52,6 +53,12 @@ int main()
 			cin >> m;
 			getchar();
 			cluster = new Cluster(vecs, minkowski, ratio, m); break;
+		case 5:
+			cout << "ÊäÈëÆ¥Åä²â¶ÈµÄãÐÖµ:" << endl;
+			double thr;
+			cin >> thr;
+			getchar();
+			cluster = new Cluster(vecs, measure, ratio,0,thr); break;
 		}
 
 		cluster->miniMax();

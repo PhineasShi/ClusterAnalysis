@@ -15,7 +15,7 @@ class Distance
 {
 public:
 	Distance();
-	Distance(vector<double> &vec1, vector<double> &vec2, DistType distType = euclidean, int m = 2) :vec1(vec1), vec2(vec2), distType(distType), m(m) { dim = vec1.size(); };
+	Distance(vector<double> &vec1, vector<double> &vec2, DistType distType = euclidean, int m = 2, double thr=0) :vec1(vec1), vec2(vec2), distType(distType), m(m), thr(thr) { dim = vec1.size(); };
 	~Distance();
 
 	double getDist();		//计算并返回距离
@@ -27,6 +27,7 @@ private:
 	vector<double> vec2;
 	DistType distType;		//距离类型
 	int m;					//闵氏距离中的参数
+	double thr;				//匹配测度所需的二值化阈值
 
 	//计算各种距离函数
 	void calEuDist();
@@ -34,5 +35,8 @@ private:
 	void calChDist();
 	void calMiDist();
 	void calMeDist();		//TODO
+
+
+	void threshold(vector<double> &vec,double threshold);		//二值化数据使其能够进行匹配测度计算
 };
 

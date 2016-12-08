@@ -78,6 +78,8 @@ void Distance::calMiDist()
 
 void Distance::calMeDist()
 {
+	threshold(vec1, thr);
+	threshold(vec2, thr);
 	double var = 0,var1=0,var2=0;
 	for (int i = 0; i < dim; i++)
 	{
@@ -87,4 +89,19 @@ void Distance::calMeDist()
 	}
 
 	var = var / (var1+var2-var);
+}
+
+void Distance::threshold(vector<double> &vec, double threshold)
+{
+	for (int i = 0; i < vec.size(); i++)
+	{
+		if (vec[i]>=threshold)
+		{
+			vec[i] = 1;
+		}
+		else
+		{
+			vec[i] = 0;
+		}
+	}
 }
