@@ -16,6 +16,8 @@ public:
 	void cMean();				//C均值法
 
 	void showResult();
+	void showInClassDist();		//显示类内距离
+	void showInterClassDist();	//显示类间距离
 	vector<vector<vector<double> > > getResult() { return result; };
 private:
 	vector<vector<double> > vecs;

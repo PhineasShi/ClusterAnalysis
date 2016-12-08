@@ -99,6 +99,14 @@ void Cluster::showResult()
 	}
 }
 
+void Cluster::showInClassDist()
+{
+}
+
+void Cluster::showInterClassDist()
+{
+}
+
 void Cluster::showVec(const vector<double>& vec)
 {
 	cout << "(" << vec[0];
