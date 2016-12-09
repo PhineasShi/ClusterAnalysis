@@ -101,17 +101,12 @@ void Cluster::showResult()
 
 void Cluster::showInClassDist()
 {
-	
-}
-
-void Cluster::showInterClassDist()
-{
 	int count = result.size();
 	double *dists = new double(count);
 	for (int i = 0; i < result.size(); i++)
 	{
 		double tmpdist = 0;
-		
+
 		vector<vector<double> > vecs = result[i];
 		for (int j = 0; j < vecs.size(); j++)
 		{
@@ -119,8 +114,8 @@ void Cluster::showInterClassDist()
 			for (int k = 0; k < vecs.size(); k++)
 			{
 				vector<double> vec2 = vecs[k];
-				
-				if (j!= k)
+
+				if (j != k)
 				{
 					int dim = vec2.size();
 					double var = 0;
@@ -135,9 +130,14 @@ void Cluster::showInterClassDist()
 		}
 
 		dists[i] = tmpdist / vecs.size();
-		cout << "¸÷¸öÀàÄÚ¾àÀë£º" << endl;
+		cout << "ç¬¬" <<i+1<<"ç±»ç±»å†…è·ç¦»ä¸ºï¼š";
 		cout << dists[i] << endl;
 	}
+}
+
+void Cluster::showInterClassDist()
+{
+	
 }
 
 void Cluster::showVec(const vector<double>& vec)
