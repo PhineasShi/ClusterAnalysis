@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <fstream>
 #include <vector>
 #include<string>
@@ -16,7 +16,7 @@ int main()
 	while (true)
 	{
 		int select = 0;
-		cout << "Ñ¡ÔñÊý¾ÝÀ´Ô´\t£¨1-ÎÄ¼þ\t2-ÊÖ¶¯ÊäÈë£©\tÒÔ'#'½áÊø:" << endl;
+		cout << "é€‰æ‹©æ•°æ®æ¥æº\tï¼ˆ1-æ–‡ä»¶\t2-æ‰‹åŠ¨è¾“å…¥ï¼‰\tä»¥'#'ç»“æŸ:" << endl;
 		cin >> select;
 		getchar();
 		if (select == 2)
@@ -28,16 +28,16 @@ int main()
 		vector<vector<double> > vecs;
 		loadTestdata(path, vecs);
 
-		cout << "ÊäÈë×î´ó×îÐ¡¾àÀë·¨ËùÐèµÄ±ÈÀý²ÎÊý:" << endl;
+		cout << "è¾“å…¥æœ€å¤§æœ€å°è·ç¦»æ³•æ‰€éœ€çš„æ¯”ä¾‹å‚æ•°:" << endl;
 		double ratio;
 		cin >> ratio;
 		getchar();
 
-		cout << "Ñ¡Ôñ¾àÀëËã·¨£º" << endl;
-		cout << "1-Å·Ê½¾àÀë" << endl;
-		cout << "2-¾ø¶ÔÖµ¾àÀë" << endl;
-		cout << "3-ÇÐÊÏ¾àÀë" << endl;
-		cout << "4-ãÉÊÏ¾àÀë" << endl;
+		cout << "é€‰æ‹©è·ç¦»ç®—æ³•ï¼š" << endl;
+		cout << "1-æ¬§å¼è·ç¦»" << endl;
+		cout << "2-ç»å¯¹å€¼è·ç¦»" << endl;
+		cout << "3-åˆ‡æ°è·ç¦»" << endl;
+		cout << "4-é—µæ°è·ç¦»" << endl;
 		cin >> select;
 		getchar();
 		Cluster *cluster = nullptr;
@@ -47,7 +47,7 @@ int main()
 		case 2:cluster = new Cluster(vecs, manhattan, ratio); break;
 		case 3:cluster = new Cluster(vecs, chebyshev, ratio); break;
 		case 4:
-			cout << "ÊäÈëãÉÊÏ¾àÀëµÄ²ÎÊý:" << endl;
+			cout << "è¾“å…¥é—µæ°è·ç¦»çš„å‚æ•°:" << endl;
 			int m;
 			cin >> m;
 			getchar();
@@ -58,7 +58,7 @@ int main()
 		cluster->showResult();
 		saveResult(*cluster, "result.data");
 		char continues = 'N';
-		cout << "¼ÌÐø?(Y/N):";
+		cout << "ç»§ç»­?(Y/N):";
 		cin >> continues;
 		cout << endl;
 		getchar();
@@ -123,7 +123,7 @@ void  saveResult(Cluster cluster, string path)
 
 void inputData(string path)
 {
-	cout << "ÇëÊäÈë£º" << endl;
+	cout << "è¯·è¾“å…¥ï¼š" << endl;
 
 	ofstream output;
 	output.open(path);

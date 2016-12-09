@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <iostream>
 #include <vector>
 #include <list>
@@ -12,18 +12,18 @@ public:
 	Cluster();
 	Cluster( vector<vector<double> > &vecs, DistType distType = euclidean, double ratio = 0.5, int m = 2) :vecs(vecs), distType(distType), ratio(ratio), m(m) {};
 	~Cluster();
-	void miniMax();				//×î´ó×îĞ¡¾àÀë·¨
-	void cMean();				//C¾ùÖµ·¨
+	void miniMax();				//æœ€å¤§æœ€å°è·ç¦»æ³•
+	void cMean();				//Cå‡å€¼æ³•
 
 	void showResult();
-	void showInClassDist();		//ÏÔÊ¾ÀàÄÚ¾àÀë
-	void showInterClassDist();	//ÏÔÊ¾Àà¼ä¾àÀë
+	void showInClassDist();		//æ˜¾ç¤ºç±»å†…è·ç¦»
+	void showInterClassDist();	//æ˜¾ç¤ºç±»é—´è·ç¦»
 	vector<vector<vector<double> > > getResult() { return result; };
 private:
 	vector<vector<double> > vecs;
-	vector<vector<vector<double> > > result;		//vector<vector<double> >´æ·ÅÃ¿Ò»ÀàµÄËùÓĞvec£¬ÆäÖĞµÄµÚÒ»¸övector<double>Îª¸ÃÀàµÄ¾ÛÀàÖĞĞÄ 
-	double ratio;				//×î´ó×îĞ¡¾àÀë·¨ËùĞèµÄ±ÈÀı²ÎÊı
-	int m;						//ãÉÊÏ¾àÀëËùĞèµÄ²ÎÊı
+	vector<vector<vector<double> > > result;		//vector<vector<double> >å­˜æ”¾æ¯ä¸€ç±»çš„æ‰€æœ‰vecï¼Œå…¶ä¸­çš„ç¬¬ä¸€ä¸ªvector<double>ä¸ºè¯¥ç±»çš„èšç±»ä¸­å¿ƒ 
+	double ratio;				//æœ€å¤§æœ€å°è·ç¦»æ³•æ‰€éœ€çš„æ¯”ä¾‹å‚æ•°
+	int m;						//é—µæ°è·ç¦»æ‰€éœ€çš„å‚æ•°
 	DistType distType;
 
 	//Show functions

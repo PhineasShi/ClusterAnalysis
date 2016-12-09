@@ -1,15 +1,15 @@
-#pragma once
+ï»¿#pragma once
 #include <math.h>
 #include <vector>
 using namespace std;
 
-typedef enum DistType			//¾àÀëÀàĞÍÃ¶¾Ù
+typedef enum DistType			//è·ç¦»ç±»å‹æšä¸¾
 {
-	euclidean,		//Å·Ê½¾àÀë
-	manhattan,		//¾ø¶ÔÖµ¾àÀë
-	chebyshev,		//ÇĞÊÏ¾àÀë
-	minkowski,		//ãÉÊÏ¾àÀë
-	measure,		//Æ¥Åä²â¶È
+	euclidean,		//æ¬§å¼è·ç¦»
+	manhattan,		//ç»å¯¹å€¼è·ç¦»
+	chebyshev,		//åˆ‡æ°è·ç¦»
+	minkowski,		//é—µæ°è·ç¦»
+	measure,		//åŒ¹é…æµ‹åº¦
 };
 class Distance
 {
@@ -18,17 +18,17 @@ public:
 	Distance(vector<double> &vec1, vector<double> &vec2, DistType distType = euclidean, int m = 2) :vec1(vec1), vec2(vec2), distType(distType), m(m) { dim = vec1.size(); };
 	~Distance();
 
-	double getDist();		//¼ÆËã²¢·µ»Ø¾àÀë
+	double getDist();		//è®¡ç®—å¹¶è¿”å›è·ç¦»
 
 private:
-	double dist;			//¼ÆËãµÃµ½µÄ¾àÀë
-	int dim;				//ÏòÁ¿µÄÎ¬¶È
-	vector<double> vec1;			//ĞèÒª¼ÆËã¾àÀëµÄÁ½¸öÏòÁ¿
+	double dist;			//è®¡ç®—å¾—åˆ°çš„è·ç¦»
+	int dim;				//å‘é‡çš„ç»´åº¦
+	vector<double> vec1;			//éœ€è¦è®¡ç®—è·ç¦»çš„ä¸¤ä¸ªå‘é‡
 	vector<double> vec2;
-	DistType distType;		//¾àÀëÀàĞÍ
-	int m;					//ãÉÊÏ¾àÀëÖĞµÄ²ÎÊı
+	DistType distType;		//è·ç¦»ç±»å‹
+	int m;					//é—µæ°è·ç¦»ä¸­çš„å‚æ•°
 
-	//¼ÆËã¸÷ÖÖ¾àÀëº¯Êı
+	//è®¡ç®—å„ç§è·ç¦»å‡½æ•°
 	void calEuDist();
 	void calMaDist();
 	void calChDist();
