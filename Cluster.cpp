@@ -101,10 +101,43 @@ void Cluster::showResult()
 
 void Cluster::showInClassDist()
 {
+	
 }
 
 void Cluster::showInterClassDist()
 {
+	int count = result.size();
+	double *dists = new double(count);
+	for (int i = 0; i < result.size(); i++)
+	{
+		double tmpdist = 0;
+		
+		vector<vector<double> > vecs = result[i];
+		for (int j = 0; j < vecs.size(); j++)
+		{
+			vector<double> vec1 = vecs[j];
+			for (int k = 0; k < vecs.size(); k++)
+			{
+				vector<double> vec2 = vecs[k];
+				
+				if (j!= k)
+				{
+					int dim = vec2.size();
+					double var = 0;
+					for (int i = 0; i < dim; i++)
+					{
+						var += pow(vec1[i] - vec2[i], 2);
+					}
+					tmpdist = sqrt(var);
+				}
+
+			}
+		}
+
+		dists[i] = tmpdist / vecs.size();
+		cout << "各个类内距离：" << endl;
+		cout << dists[i] << endl;
+	}
 }
 
 void Cluster::showVec(const vector<double>& vec)
