@@ -57,6 +57,10 @@ int main()
 		cluster->miniMax();
 		cluster->showResult();
 		saveResult(*cluster, "result.data");
+
+		cluster->showInClassDist();
+		cluster->showInterClassDist();
+
 		char continues = 'N';
 		cout << "继续?(Y/N):";
 		cin >> continues;

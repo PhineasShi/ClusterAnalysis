@@ -119,9 +119,9 @@ void Cluster::showInClassDist()
 				{
 					int dim = vec2.size();
 					double var = 0;
-					for (int i = 0; i < dim; i++)
+					for (int m = 0; m < dim; m++)
 					{
-						var += pow(vec1[i] - vec2[i], 2);
+						var += pow(vec1[m] - vec2[m], 2);
 					}
 					tmpdist = sqrt(var);
 				}
@@ -137,7 +137,46 @@ void Cluster::showInClassDist()
 
 void Cluster::showInterClassDist()
 {
-	
+	int count = result.size();
+	count = count*(count - 1) / 2;
+	double *dists = new double[count];
+	int index = 0;
+	for (int i = 0; i < result.size(); i++)
+	{
+		double tmpdist = 0;
+		vector<vector<double> > grp1 = result[i];
+
+		for (int j = i; j < result.size(); j++)
+		{
+			double minDis = DBL_MAX;
+			vector<vector<double> > grp2 = result[j];
+			if (i != j)
+			{
+				for (int m = 0; m < grp1.size(); m++)
+				{
+					vector<double> pnt1 = grp1[m];
+					for (int n = 0; n < grp2.size(); n++)
+					{
+						vector<double> pnt2 = grp2[n];
+					
+					
+							int dim = pnt2.size();
+							double var = 0;
+							for (int k = 0; k < dim; k++)
+							{
+								var += pow(pnt1[k] - pnt2[k], 2);
+							}
+							double temp = sqrt(var);
+							minDis = temp < minDis ? temp : minDis;
+					}
+				}
+				dists[index++] = minDis;
+				cout << "第" << i + 1 << "类和" << "第" << j + 1 << "类的类间距离是：" << minDis << endl;
+			}
+			
+
+		}
+	}
 }
 
 void Cluster::showVec(const vector<double>& vec)
