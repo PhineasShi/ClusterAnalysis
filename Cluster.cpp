@@ -102,7 +102,7 @@ void Cluster::showResult()
 void Cluster::showInClassDist()
 {
 	int count = result.size();
-	double *dists = new double(count);
+	double *dists = new double[count];
 	for (int i = 0; i < result.size(); i++)
 	{
 		double tmpdist = 0;
@@ -133,6 +133,7 @@ void Cluster::showInClassDist()
 		cout << "第" <<i+1<<"类类内距离为：";
 		cout << dists[i] << endl;
 	}
+	free(dists);
 }
 
 void Cluster::showInterClassDist()
@@ -174,9 +175,9 @@ void Cluster::showInterClassDist()
 				cout << "第" << i + 1 << "类和" << "第" << j + 1 << "类的类间距离是：" << minDis << endl;
 			}
 			
-
 		}
 	}
+	free(dists);
 }
 
 void Cluster::showVec(const vector<double>& vec)
