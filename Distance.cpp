@@ -10,7 +10,7 @@ Distance::Distance()
 Distance::~Distance()
 {
 }
-
+//dist 成员的getter方法，用于计算并返回dist
 double Distance::getDist()
 {
 	switch (distType)
@@ -35,7 +35,7 @@ double Distance::getDist()
 	}
 	return this->dist;
 }
-
+//计算欧氏距离
 void Distance::calEuDist()
 {
 	double var = 0;
@@ -45,7 +45,7 @@ void Distance::calEuDist()
 	}
 	dist = sqrt(var);
 }
-
+//计算绝对值距离
 void Distance::calMaDist()
 {
 	double sum = 0;
@@ -55,7 +55,7 @@ void Distance::calMaDist()
 	}
 	dist = sum;
 }
-
+//计算切氏距离
 void Distance::calChDist()
 {
 	double max = 0;
@@ -65,7 +65,7 @@ void Distance::calChDist()
 	}
 	dist = max;
 }
-
+//计算闵氏距离
 void Distance::calMiDist()
 {
 	double var = 0;
@@ -75,7 +75,7 @@ void Distance::calMiDist()
 	}
 	dist = pow(var,1.0/m);
 }
-
+//计算匹配测度
 void Distance::calMeDist()
 {
 	double var = 0,var1=0,var2=0;

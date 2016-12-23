@@ -15,7 +15,7 @@ class Distance
 {
 public:
 	Distance();
-	Distance(vector<double> &vec1, vector<double> &vec2, DistType distType = euclidean, int m = 2) :vec1(vec1), vec2(vec2), distType(distType), m(m) { dim = vec1.size(); };
+	Distance(vector<double> &vec1, vector<double> &vec2, DistType distType = euclidean, int m = 2) :vec1(vec1), vec2(vec2), distType(distType), m(m) { dim = vec1.size(); };	//构造函数给成员复制
 	~Distance();
 
 	double getDist();		//计算并返回距离
@@ -33,6 +33,6 @@ private:
 	void calMaDist();
 	void calChDist();
 	void calMiDist();
-	void calMeDist();		//TODO
+	void calMeDist();
 };
 

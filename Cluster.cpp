@@ -10,7 +10,7 @@ Cluster::Cluster()
 Cluster::~Cluster()
 {
 }
-
+//最大最小距离法进行聚类
 void Cluster::miniMax()
 {
 	//Make the first vec the first center of a class
@@ -79,7 +79,7 @@ void Cluster::miniMax()
 		showVecClustered(result[minInd][0], *i, minDist);
 	}
 }
-
+//将聚类后每个类的信息显示出来
 void Cluster::showResult()
 {
 	cout << endl << "Results:" << endl;
@@ -98,7 +98,7 @@ void Cluster::showResult()
 		cout << endl;
 	}
 }
-
+//显示每个类的类内距离
 void Cluster::showInClassDist()
 {
 	int count = result.size();
@@ -135,7 +135,7 @@ void Cluster::showInClassDist()
 	}
 	free(dists);
 }
-
+//显示每两个类间的类间距离
 void Cluster::showInterClassDist()
 {
 	int count = result.size();
@@ -179,7 +179,7 @@ void Cluster::showInterClassDist()
 	}
 	free(dists);
 }
-
+//显示节点信息
 void Cluster::showVec(const vector<double>& vec)
 {
 	cout << "(" << vec[0];
@@ -189,14 +189,14 @@ void Cluster::showVec(const vector<double>& vec)
 	}
 	cout << ")";
 }
-
+//显示类心信息
 void Cluster::showCenterFound(const vector<double>& vec, const double & dist)
 {
 	cout << "New center found:";
 	showVec(vec);
 	cout << "\t" << "Max distance to the closest center:" << dist << endl;	
 }
-
+//显示每个被聚类的节点
 void Cluster::showVecClustered(const vector<double>& center, const vector<double>& vec, const double& minDist)
 {
 	showVec(center);
@@ -204,15 +204,15 @@ void Cluster::showVecClustered(const vector<double>& center, const vector<double
 	showVec(vec);
 	cout << "\t" << "Distance to the closest center:" << minDist << endl;
 }
-
+//Get the vec whose min distance to centers is the max among all the vecs, and get the distance too
 void Cluster::getMax(list<vector<double> > lists, vector<double> &maxVec, double &maxDist)
 {
 	maxDist = 0;
 	vector<double> center;
-	for (list<vector<double> >::iterator i = lists.begin(); i != lists.end(); i++)	//Traverse every vecs which are not center
+	for (list<vector<double> >::iterator i = lists.begin(); i != lists.end(); i++)	//Traverse every vecs which are not center, to get the max distance
 	{
 		double minDist;
-		for (int j = 0; j < result.size(); j++)	//Traverse every centers
+		for (int j = 0; j < result.size(); j++)	//Traversing every centers to get the min distance 
 		{
 			center = result[j][0];
 			Distance dist(*i, center, distType,m);

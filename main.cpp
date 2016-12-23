@@ -7,9 +7,10 @@
 
 using namespace std;
 
-void loadTestdata(string path, vector<vector<double> > &vecs);
-void  saveResult(Cluster cluster, string path);
-void inputData(string path);
+void loadTestdata(string path, vector<vector<double> > &vecs);//从文件读入数据集	
+void  saveResult(Cluster cluster, string path);//将结果集保存到文件
+void inputData(string path);   //从输入数据集并保存到文件
+
 
 int main()
 {
@@ -54,7 +55,7 @@ int main()
 			cluster = new Cluster(vecs, minkowski, ratio, m); break;
 		}
 
-		cluster->miniMax();
+		cluster->miniMax();				//调用最大最小法进行聚类
 		cluster->showResult();
 		saveResult(*cluster, "result.data");
 
@@ -73,7 +74,7 @@ int main()
 	}
 	return 0;
 }
-
+//从文件读入数据集
 void loadTestdata(string path, vector<vector<double> > &vecs)
 {
 	ifstream in;
@@ -97,7 +98,7 @@ void loadTestdata(string path, vector<vector<double> > &vecs)
 		in.get();	//read \n
 	}
 }
-
+//将结果集保存到文件
 void  saveResult(Cluster cluster, string path)
 {
 	ofstream output;
@@ -123,8 +124,7 @@ void  saveResult(Cluster cluster, string path)
 		output << endl;
 	}
 }
-
-
+//从输入数据集并保存到文件
 void inputData(string path)
 {
 	cout << "请输入：" << endl;
